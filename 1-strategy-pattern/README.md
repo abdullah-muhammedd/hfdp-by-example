@@ -61,14 +61,14 @@ git clone <repository-url>
 cd 1-strategy-pattern
 
 # Install dependencies
-bun install
+yarn install
 ```
 
 ### Running the Demo
 
 ```bash
 # Run the demonstration
-bun main.ts
+yarn deev
 ```
 
 ## 💡 Usage Examples

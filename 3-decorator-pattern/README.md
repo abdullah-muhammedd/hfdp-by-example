@@ -74,14 +74,14 @@ git clone <repository-url>
 cd 3-decorator-pattern
 
 # Install dependencies
-bun install
+yarn install
 ```
 
 ### Running the Demo
 
 ```bash
 # Run the demonstration
-bun run main.ts
+yarn deev
 ```
 
 ## 💡 Usage Examples
