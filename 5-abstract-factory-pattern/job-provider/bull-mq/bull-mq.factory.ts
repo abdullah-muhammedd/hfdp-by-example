@@ -8,16 +8,17 @@ import { BullJobRunner } from './bull-mq.runner';
 import { BullJobSerializer } from './bull-mq.serializer';
 import { JobProcessorInterface } from '../../types/interface/job-processor.interface';
 import { BullJobProcessor } from './bull-mq.processor';
+import { BULLCONFIG } from './bull-mq.config';
 
 export class BullJobsFactory implements JobsFactoryInterface {
   private redis: Redis;
   private instanceCache = new Map<string, BullJobRunner | BullJobSerializer | BullJobProcessor>();
 
-  constructor(private queueName = 'default') {
+  constructor(private queueName = BULLCONFIG.queueName) {
     this.queueName = queueName;
     this.redis = new IORedis({
-      port: 6379,
-      maxRetriesPerRequest: null,
+      port: BULLCONFIG.redisPort,
+      maxRetriesPerRequest: null, // Must be null for BULL
     });
     this.redis.on('error', (err) => {
       console.error('[BullMQ] Redis error:', err);
@@ -50,6 +51,7 @@ export class BullJobsFactory implements JobsFactoryInterface {
     this.instanceCache.set(BullJobSerializer.name, serializer);
     return serializer;
   }
+
   public async close(): Promise<void> {
     if (this.redis.status !== 'end') {
       await this.redis.quit();

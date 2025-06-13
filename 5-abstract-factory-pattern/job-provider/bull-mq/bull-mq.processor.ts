@@ -14,15 +14,16 @@ export class BullJobProcessor implements JobProcessorInterface {
     const worker = new Worker(
       this.queueName,
       async (job: Job) => {
-        console.log(`[BullMQ] Processing job "${job.queueName}" with payload:`, job.data);
-        await setTimeout(2000);
+        const content = serializer.deserialize(job.data);
+        console.log(`[BullMQ] Processing job "${content.jobName}" with payload:`, content.payload); // It is always better to create a strictt type for your jobs payloads
+        await setTimeout(2000); // Simulate long processing time
       },
       { connection: this.redis },
     );
 
     worker.on('completed', (job) => {
       const content = serializer.deserialize(job.data);
-      console.log(`[BullMQ] Job "${job.queueName}" completed with payload:`, content);
+      console.log(`[BullMQ] Job "${content.jobName}" completed with payload:`, content.payload);
     });
 
     worker.on('failed', (job, err) => {

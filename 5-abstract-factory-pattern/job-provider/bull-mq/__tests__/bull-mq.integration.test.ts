@@ -32,6 +32,7 @@ describe('BullMQ Integration Tests', () => {
   it('should add a job to the queue', async () => {
     const jobName = 'test-job';
     const payload = { data: 'test-payload' };
-    await runner.publish(jobName, payload);
+    const serialized = serializer.serialize(payload);
+    await runner.publish(jobName, serialized);
   });
 });

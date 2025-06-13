@@ -20,7 +20,14 @@ export class BillingService {
   }
 
   async billUser(userId: number): Promise<void> {
-    const payload = this.serializer?.serialize({ userId });
+    if (!this.serializer) throw new Error('Service is not initialized');
+    const payload = this.serializer.serialize({
+      jobName: 'billUser',
+      payload: {
+        userId,
+        transactionId: crypto.randomUUID(),
+      },
+    });
     await this.runner?.publish('billUser', payload);
   }
 

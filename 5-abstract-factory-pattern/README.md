@@ -1,6 +1,6 @@
 # Abstract Factory Pattern - Job Management System Example
 
-This project is part of my Head First Design Patterns (HFDP) learning journey, specifically demonstrating Chapter 4's Abstract Factory Pattern in a real-world scenario.
+This project is part of my Head First Design Patterns (HFDP) learning journey, specifically demonstrating Chapter 4's Part 2 Abstract Factory Pattern in a real-world scenario.
 
 ## 🎯 Overview
 
@@ -12,7 +12,7 @@ Instead of using the classic Pizza example from HFDP, this project implements th
 5-abstract-factory-pattern/
 ├── job-provider/
 │   ├── rabbit-mq/
-│   │   ├── rabbit-mq.factory.ts               # Factory for RabbitMQ job provider
+│   │   ├── rabbit-mq.factory.ts              # Factory for RabbitMQ job provider
 │   │   ├── rabbit-mq.processor.ts            # Job processor for RabbitMQ
 │   │   ├── rabbit-mq.runner.ts               # Job runner for RabbitMQ
 │   │   └── rabbit-mq.serializer.ts           # Job serializer for RabbitMQ
@@ -28,9 +28,9 @@ Instead of using the classic Pizza example from HFDP, this project implements th
 │   │       ├── job-processor.interface.ts    # Interface for job processors
 │   │       ├── job-runner.interface.ts       # Interface for job runners
 │   │       └── job-serializer.interface.ts   # Interface for job serializers
-│   ├── provider/
-│   │   └── job-factory.provider.ts           # Singleton provider for factories
-└── main.ts                                    # Demo implementation
+|   ├──biling.service.ts                      # the service that uses a specific provider to handles jobs processing
+|   |
+└── main.ts                                   # Demo implementation
 ```
 
 ## 🎨 Design Pattern Implementation
@@ -85,6 +85,13 @@ yarn install
 yarn dev
 ```
 
+### Running the integration tests
+
+```bash
+# Run the demonstration
+yarn test
+```
+
 ## 💡 Usage Examples
 
 ```typescript
@@ -115,28 +122,6 @@ const bullSerializer = bullFactory.createSerializer();
    - Maintains single responsibility principle
    - Enables easy extension for new job providers
 
-2. **Design Considerations**
-
-   - Abstract Factory vs Factory Method
-   - Singleton pattern for provider
-   - Dependency injection in factories
-
-3. **TypeScript Features Used**
-   - Abstract classes
-   - Interfaces
-   - Map for factory registry
-
-## 📝 Notes
-
-### Why Dependency Injection for Factories?
-
-The factories are injected into the provider using a Map because:
-
-- Improves testability by allowing mock factories
-- Enables easy extension with new factory types
-- Provides runtime flexibility in factory configuration
-- Follows dependency inversion principle
-
 ## 🤝 Contributing
 
 Feel free to use this as a learning resource or extend it with:
@@ -149,9 +134,10 @@ Feel free to use this as a learning resource or extend it with:
 ## 📚 Related HFDP Concepts
 
 - Abstract Factory Pattern basics
-- Singleton Pattern integration
 - Dependency Injection
 - Object creation patterns
+- Open closed principle
+- DDependency inversion principle
 
 ## 📄 License
 

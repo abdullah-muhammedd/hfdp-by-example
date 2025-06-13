@@ -47,7 +47,7 @@ export class RabbitJobRunner implements JobRunnerInterface {
         console.warn(
           `[RabbitMQ] Channel creation failed, retrying (${this.retryAttempts}/${this.MAX_RETRIES})`,
         );
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait for a while before retrying again
         return this.initChannel();
       }
       throw new Error(
@@ -58,15 +58,14 @@ export class RabbitJobRunner implements JobRunnerInterface {
     }
   }
 
-  async publish<T = any>(jobName: string, payload: T): Promise<void> {
+  async publish(jobName: string, payload: string): Promise<void> {
     await this.initChannel();
 
     if (!this.channel) {
       throw new Error('RabbitMQ channel not available');
     }
 
-    const message: JobMessage<T> = { jobName, payload };
-    const messageBuffer = Buffer.from(JSON.stringify(message));
+    const messageBuffer = Buffer.from(payload);
 
     const sent = this.channel.sendToQueue(this.queueName, messageBuffer, { persistent: true });
 

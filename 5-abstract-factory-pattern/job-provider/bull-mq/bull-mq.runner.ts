@@ -9,8 +9,8 @@ export class BullJobRunner implements JobRunnerInterface {
     this.queue = new Queue(queueName, { connection: redis });
   }
 
-  public async publish(jobName: string, payload: any): Promise<void> {
+  public async publish(jobName: string, payload: string): Promise<void> {
     await this.queue.add(jobName, payload);
-    console.log(`[BullMQ] Job "${jobName}" added to queue with payload:`, payload);
+    console.log(`[BullMQ] Job "${jobName}" added to queue`);
   }
 }

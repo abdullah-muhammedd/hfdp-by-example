@@ -1,3 +1,3 @@
 export interface JobRunnerInterface {
-  publish(jobName: string, payload: any): Promise<void>;
+  publish(jobName: string, payload: string): Promise<void>;
 }
