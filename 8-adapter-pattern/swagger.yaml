@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: Report Generation API
+  version: 1.0.0
+  description: |
+    API for generating DOCX and PDF reports using v1, v2, and adapter endpoints.
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/v1/reports:
+    post:
+      summary: Generate a DOCX report (v1)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportData"
+            example:
+              title: "Quarterly Report"
+              content: "This is the content of the quarterly report."
+              author: "Alice Smith"
+              date: "2024-07-06T00:00:00.000Z"
+              metadata:
+                department: "Finance"
+                confidential: true
+      responses:
+        "200":
+          description: Report generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReportResponse"
+    get:
+      summary: Get the report format for v1
+      responses:
+        "200":
+          description: Format info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  format:
+                    type: string
+  /api/v2/reports:
+    post:
+      summary: Generate a PDF report (v2)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportData"
+            example:
+              title: "Annual Summary"
+              content: "Summary of the year in review."
+              author: "Bob Jones"
+              date: "2024-07-06T00:00:00.000Z"
+              metadata:
+                category: "Summary"
+                tags: ["annual", "summary"]
+      responses:
+        "200":
+          description: Report generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReportResponse"
+    get:
+      summary: Get the report format for v2
+      responses:
+        "200":
+          description: Format info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  format:
+                    type: string
+  /api/v1-with-v2/reports:
+    post:
+      summary: Generate a PDF report using v2 provider via v1 API (adapter)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportData"
+            example:
+              title: "Adapter Test"
+              content: "This report is generated using the v2 provider via the v1 API."
+              author: "Charlie"
+              date: "2024-07-06T00:00:00.000Z"
+              metadata:
+                adapter: true
+      responses:
+        "200":
+          description: Report generated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReportResponse"
+    get:
+      summary: Get the report format for v1-with-v2
+      responses:
+        "200":
+          description: Format info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  format:
+                    type: string
+components:
+  schemas:
+    ReportData:
+      type: object
+      required:
+        - title
+        - content
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        author:
+          type: string
+        date:
+          type: string
+          format: date-time
+        metadata:
+          type: object
+    ReportResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        path:
+          type: string
