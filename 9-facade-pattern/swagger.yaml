@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  title: Observation Facade API
+  version: 1.0.0
+  description: API documentation for the Observation Facade example
+servers:
+  - url: http://localhost:3000
+    description: Local server
+paths:
+  /api/payment/initiate:
+    post:
+      summary: Initiate a payment
+      tags: [Payment]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                amount:
+                  type: number
+      responses:
+        200:
+          description: Payment initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactionId:
+                    type: string
+  /api/payment/process:
+    post:
+      summary: Process a payment
+      tags: [Payment]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                amount:
+                  type: number
+      responses:
+        200:
+          description: Payment processed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  reason:
+                    type: string
+  /api/payment/refund:
+    post:
+      summary: Refund a payment
+      tags: [Payment]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                amount:
+                  type: number
+      responses:
+        200:
+          description: Refund issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  refundId:
+                    type: string
+  /api/user/login:
+    post:
+      summary: User login
+      tags: [User]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+  /api/user/logout:
+    post:
+      summary: User logout
+      tags: [User]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+      responses:
+        200:
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+  /api/user/register:
+    post:
+      summary: Register a new user
+      tags: [User]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        200:
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
+  /api/user/update-profile:
+    post:
+      summary: Update user profile
+      tags: [User]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                changes:
+                  type: object
+      responses:
+        200:
+          description: Profile updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
