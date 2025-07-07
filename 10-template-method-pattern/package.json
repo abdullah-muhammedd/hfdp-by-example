@@ -1,0 +1,26 @@
+{
+  "name": "1-strategy-pattern",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn prisma generate && bun src/main.ts",
+    "studio": "yarn prisma studio"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.27",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.11.1",
+    "csv-parse": "^5.6.0",
+    "prisma": "^6.11.1",
+    "xlsx": "^0.18.5"
+  }
+}

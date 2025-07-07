@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WebEvent {
+  id          Int      @id @default(autoincrement())
+  userId      String // anonymous or logged-in user
+  sessionId   String
+  eventType   String // page_view, click, form_submit, etc.
+  url         String
+  referrer    String?
+  userAgent   String?
+  deviceType  String // mobile, desktop, tablet
+  browser     String?
+  country     String?
+  timestamp   DateTime
+  createdAt   DateTime @default(now())
+  ipAddress   String?
+  countryCode String?
+  isBot       Boolean  @default(false)
+}
