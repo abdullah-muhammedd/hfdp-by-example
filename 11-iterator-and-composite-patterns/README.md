@@ -130,6 +130,13 @@ run();
    - Real data handling: file I/O, parsing, cleaning, formatting, output
    - Directory creation & error handling in Load step
 
+4. **Typescript Features**
+   - Iterable interface
+   - Iterator inteerface
+   - Itereators
+   - Geneerators
+   - Symbols
+
 ## 📝 Notes
 
 - Leaf jobs throw if `add()` is invoked, preserving Composite integrity.
@@ -141,6 +148,7 @@ run();
 Feel free to extend this with:
 
 - Additional jobs (e.g., validation, enrichment)
+- Separate iteration from jobs logic to get stricter SRP
 - Parallel or branching pipelines
 - Integration with databases or message queues
 - More robust error/retry decorators
