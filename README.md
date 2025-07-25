@@ -67,6 +67,14 @@ Every chapter demonstrates:
   * NestJS (controllers, modules, dependency injection)
   * Express (underlying HTTP server in some demos)
 
+* **Data Modeling & Persistence**
+
+  * PostgreSQL
+  * RabbitMQ
+  * BullMQ (uses redis)
+  * Prisma (ORM for ETL template‑method example)
+  * In‑memory Repositories / Maps (simpler demos)
+
 * **HTTP & Networking**
 
   * Axios (client‑side API calls)
@@ -82,13 +90,6 @@ Every chapter demonstrates:
 
   * FFmpeg (via command‑line or fluent‑ffmpeg)
 
-* **Data Modeling & Persistence**
-
-  * PostgreSQL
-  * RabbitMQ
-  * BullMQ (uses redis)
-  * Prisma (ORM for ETL template‑method example)
-  * In‑memory Repositories / Maps (simpler demos)
 
 * **Testing**
 
