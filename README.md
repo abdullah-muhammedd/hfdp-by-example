@@ -66,12 +66,6 @@ Every chapter demonstrates:
 
   * NestJS (controllers, modules, dependency injection)
   * Express (underlying HTTP server in some demos)
-  
-* **Databases, Data Stores & Message Brokers**
-
-  * PostgreSQL
-  * RabbitMQ
-  * BullMQ (uses redis)
 
 * **HTTP & Networking**
 
@@ -90,6 +84,9 @@ Every chapter demonstrates:
 
 * **Data Modeling & Persistence**
 
+  * PostgreSQL
+  * RabbitMQ
+  * BullMQ (uses redis)
   * Prisma (ORM for ETL template‑method example)
   * In‑memory Repositories / Maps (simpler demos)
 
