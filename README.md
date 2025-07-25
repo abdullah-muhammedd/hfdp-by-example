@@ -102,10 +102,6 @@ Every chapter demonstrates:
 
   * class‑validator / class‑transformer (request validation)
 
-* **Design Pattern Support**
-
-  * csv‑parse, exceljs (for data ETL)
-
 * **Utilities & Other**
 
   * bun (optional for scripts)
