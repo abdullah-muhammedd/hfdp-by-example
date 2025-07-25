@@ -76,7 +76,6 @@ Every chapter demonstrates:
 * **HTTP & Networking**
 
   * Axios (client‑side API calls)
-  * Form‑Data (multipart uploads)
 
 * **File Handling & Streaming**
 
