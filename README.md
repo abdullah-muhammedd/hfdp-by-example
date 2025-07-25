@@ -66,6 +66,12 @@ Every chapter demonstrates:
 
   * NestJS (controllers, modules, dependency injection)
   * Express (underlying HTTP server in some demos)
+  
+* **Databases, Data Stores & Message Brokers**
+
+  * PostgreSQL
+  * RabbitMQ
+  * BullMQ (uses redis)
 
 * **HTTP & Networking**
 
